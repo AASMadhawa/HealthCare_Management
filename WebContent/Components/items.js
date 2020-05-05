@@ -117,29 +117,50 @@ function onItemDeleteComplete(response, status) {
 // CLIENTMODEL=========================================================================
 function validateItemForm() {
 	// CODE
-	if ($("#itemCode").val().trim() == "") {
-		return "Insert Item Code.";
+	if ($("#u_id").val().trim() == "") {
+		return "Insert User Id.";
 	}
 	// NAME
-	if ($("#itemName").val().trim() == "") {
-		return "Insert Item Name.";
+	if ($("#u_fname").val().trim() == "") {
+		return "Insert First Name.";
+	}
+	if ($("#u_lname").val().trim() == "") {
+		return "Insert Last Name.";
+	}
+	if ($("#u_age").val().trim() == "") {
+		return "Insert Age.";
+	}
+	var tmpAge = $("#u_age").val().trim();
+	if (!$.isNumeric(tmpAge)) {
+		return "Insert a numerical value for Age.";
+	}
+	
+	if ($("#u_address").val().trim() == "") {
+		return "Insert Address.";
+	}
+	if ($("#u_sex").val().trim() == "") {
+		return "Insert Sex.";
+	}
+	if ($("#u_email").val().trim() == "") {
+		return "Insert Email.";
+	}
+	if ($("#u_username").val().trim() == "") {
+		return "Insert Username.";
+	}
+	if ($("#u_password").val().trim() == "") {
+		return "Insert Password.";
+	}
+	if ($("#u_type").val().trim() == "") {
+		return "Insert Type.";
+	}
+	if ($("#u_contact").val().trim() == "") {
+		return "Insert Contact.";
+	}
+	var tmpContact = $("#u_contact").val().trim();
+	if (!$.isNumeric(tmpContact)) {
+		return "Insert a numerical value for Age.";
 	}
 
-	// PRICE-------------------------------
-	if ($("#itemPrice").val().trim() == "") {
-		return "Insert Item Price.";
-	}
-	// is numerical value
-	var tmpPrice = $("#itemPrice").val().trim();
-	if (!$.isNumeric(tmpPrice)) {
-		return "Insert a numerical value for Item Price.";
-	}
-	// convert to decimal price
-	$("#itemPrice").val(parseFloat(tmpPrice).toFixed(2));
-	// DESCRIPTION------------------------
-	if ($("#itemDesc").val().trim() == "") {
-		return "Insert Item Description.";
-	}
 	return true;
 }
 

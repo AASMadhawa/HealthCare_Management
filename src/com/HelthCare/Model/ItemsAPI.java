@@ -37,10 +37,17 @@ public class ItemsAPI extends HttpServlet {
 	
 	{
 		
-		 String output = itemObj.insertItem(request.getParameter("itemCode"),
-		 request.getParameter("itemName"),
-		 request.getParameter("itemPrice"),
-		 request.getParameter("itemDesc"));
+		 String output = itemObj.insertItem(request.getParameter("u_id"),
+		 request.getParameter("u_fname"),
+		 request.getParameter("u_lname"),
+		 request.getParameter("u_age"),
+		 request.getParameter("u_address"),
+		 request.getParameter("u_sex"),
+		 request.getParameter("u_email"),
+		 request.getParameter("u_username"),
+		 request.getParameter("u_password"),
+		 request.getParameter("u_type"),
+		 request.getParameter("u_contact"));
 		 
 		 response.getWriter().write(output);
 		
@@ -66,7 +73,7 @@ public class ItemsAPI extends HttpServlet {
 	
 	{
 		 Map paras = getParasMap(request);
-		 String output = itemObj.deleteItem(paras.get("itemID").toString());
+		 String output = itemObj.deleteItem(paras.get("u_id").toString());
 		 response.getWriter().write(output);
 		}
 	
