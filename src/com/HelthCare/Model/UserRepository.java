@@ -1,11 +1,7 @@
-package com.HelthCare.Service;
+package com.HelthCare.Model;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import com.HelthCare.Database.DatabaseClass;
-import com.HelthCare.Model.User;
-
 import java.sql.*;
 
 public class UserRepository {

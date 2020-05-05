@@ -1,4 +1,4 @@
-package com.HelthCare.Database;
+package com.HelthCare.Model;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
