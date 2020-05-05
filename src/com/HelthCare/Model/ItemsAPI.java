@@ -60,10 +60,17 @@ public class ItemsAPI extends HttpServlet {
 	{
 		 Map paras = getParasMap(request);
 		 String output = itemObj.updateItem(paras.get("hidItemIDSave").toString(),
-		 paras.get("itemCode").toString(),
-		 paras.get("itemName").toString(),
-		 paras.get("itemPrice").toString(),
-		 paras.get("itemDesc").toString());
+		 
+		 paras.get("u_fname").toString(),
+		 paras.get("u_lname").toString(),
+		 paras.get("u_age").toString(),
+		 paras.get("u_address").toString(),
+		 paras.get("u_sex").toString(),
+		 paras.get("u_email").toString(),
+		 paras.get("u_username").toString(),
+		 paras.get("u_password").toString(),
+		 paras.get("u_type").toString(),
+		 paras.get("u_contact").toString());
 		 
 		response.getWriter().write(output);
 		} 

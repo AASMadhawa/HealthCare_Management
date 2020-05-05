@@ -14,7 +14,7 @@ pageEncoding="ISO-8859-1"%>
 <div class="container">
 <div class="row">
 <div class="col-6">
-<h1>Items Management V10.1</h1>
+<h1>User Management - User Details</h1>
 <form id="formItem" name="formItem">
  User ID:
  <input id="u_id" name="u_id" type="text"

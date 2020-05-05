@@ -118,7 +118,7 @@ public class Item {
 		return output;
 	}
 
-	public String updateItem(String ID, String code, String name, String price, String desc) {
+	public String updateItem(String u_id, String u_fname, String u_lname, String u_age, String u_address, String u_sex, String u_email, String u_username, String u_password, String u_type, String u_contact) {
 		String output = "";
 		try {
 			Connection con = connect();
@@ -126,14 +126,21 @@ public class Item {
 				return "Error while connecting to the database for updating.";
 			}
 			// create a prepared statement
-			String query = "UPDATE items SET itemCode=?,itemName=?,itemPrice=?,itemDesc=? WHERE itemID=?";
+			String query = "UPDATE users SET u_fname=?,u_lname=?,u_age=?,u_address=?,u_sex=?,u_email=?,u_username=?,u_password=?,u_type=?,u_contact=? WHERE u_id=?";
 			PreparedStatement preparedStmt = con.prepareStatement(query);
 			// binding values
-			preparedStmt.setString(1, code);
-			preparedStmt.setString(2, name);
-			preparedStmt.setDouble(3, Double.parseDouble(price));
-			preparedStmt.setString(4, desc);
-			preparedStmt.setInt(5, Integer.parseInt(ID));
+			
+			preparedStmt.setString(1, u_fname);
+			preparedStmt.setString(2, u_lname);
+			preparedStmt.setString(3, u_age);
+			preparedStmt.setString(4, u_address);
+			preparedStmt.setString(5, u_sex);
+			preparedStmt.setString(6, u_email);
+			preparedStmt.setString(7, u_username);
+			preparedStmt.setString(8, u_password);
+			preparedStmt.setString(9, u_type);
+			preparedStmt.setString(10, u_contact);
+			preparedStmt.setString(11, u_id);
 			// execute the statement
 			preparedStmt.execute();
 			con.close();
