@@ -16,17 +16,40 @@ pageEncoding="ISO-8859-1"%>
 <div class="col-6">
 <h1>Items Management V10.1</h1>
 <form id="formItem" name="formItem">
- Item code:
- <input id="itemCode" name="itemCode" type="text"
+ User ID:
+ <input id="u_id" name="u_id" type="text"
  class="form-control form-control-sm">
- <br> Item name:
- <input id="itemName" name="itemName" type="text"
+ <br> User first name:
+ <input id="u_fname" name="u_fname" type="text"
  class="form-control form-control-sm">
- <br> Item price:
- <input id="itemPrice" name="itemPrice" type="text"
+ <br> User last name:
+ <input id="u_lname" name="u_lname" type="text"
  class="form-control form-control-sm">
- <br> Item description:
- <input id="itemDesc" name="itemDesc" type="text"
+ <br> Age:
+ <input id="u_age" name="u_age" type="text"
+ class="form-control form-control-sm">
+ <br>
+  Address:
+ <input id="u_address" name="u_address" type="text"
+ class="form-control form-control-sm">
+ <br> Sex:
+ <input id="u_sex" name="u_sex" type="text"
+ class="form-control form-control-sm">
+ <br> Email:
+ <input id="u_email" name="u_email" type="text"
+ class="form-control form-control-sm">
+ <br> Username:
+ <input id="u_username" name="u_username" type="text"
+ class="form-control form-control-sm">
+ <br>
+  <br> Password:
+ <input id="u_password" name="u_password" type="text"
+ class="form-control form-control-sm">
+ <br> Type:
+ <input id="u_type" name="u_type" type="text"
+ class="form-control form-control-sm">
+ <br> Contact:
+ <input id="u_contact" name="u_contact" type="text"
  class="form-control form-control-sm">
  <br>
  <input id="btnSave" name="btnSave" type="button" value="Save"

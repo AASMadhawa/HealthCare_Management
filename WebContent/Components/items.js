@@ -67,10 +67,18 @@ $(document).on(
 		function(event) {
 			$("#hidItemIDSave").val(
 					$(this).closest("tr").find('#hidItemIDUpdate').val());
-			$("#itemCode").val($(this).closest("tr").find('td:eq(0)').text());
-			$("#itemName").val($(this).closest("tr").find('td:eq(1)').text());
-			$("#itemPrice").val($(this).closest("tr").find('td:eq(2)').text());
-			$("#itemDesc").val($(this).closest("tr").find('td:eq(3)').text());
+			$("#u_id").val($(this).closest("tr").find('td:eq(0)').text());
+			$("#u_fname").val($(this).closest("tr").find('td:eq(1)').text());
+			$("#u_lname").val($(this).closest("tr").find('td:eq(2)').text());
+			$("#u_age").val($(this).closest("tr").find('td:eq(3)').text());
+			$("#u_address").val($(this).closest("tr").find('td:eq(4)').text());
+			$("#u_sex").val($(this).closest("tr").find('td:eq(5)').text());
+			$("#u_email").val($(this).closest("tr").find('td:eq(6)').text());
+			$("#u_username").val($(this).closest("tr").find('td:eq(7)').text());
+			$("#u_password").val($(this).closest("tr").find('td:eq(8)').text());
+			$("#u_type").val($(this).closest("tr").find('td:eq(9)').text());
+			$("#u_contact").val($(this).closest("tr").find('td:eq(10)').text());
+			
 		});
 
 // REMOVE==========================================
@@ -78,7 +86,7 @@ $(document).on("click", ".btnRemove", function(event) {
 	$.ajax({
 		url : "ItemsAPI",
 		type : "DELETE",
-		data : "itemID=" + $(this).data("itemid"),
+		data : "u_id=" + $(this).data("u_id"),
 		dataType : "text",
 		complete : function(response, status) {
 			onItemDeleteComplete(response.responseText, status);

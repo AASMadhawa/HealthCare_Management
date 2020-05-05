@@ -30,31 +30,44 @@ public class Item {
 
 			// Prepare the html table to be displayed
 
-			output = "<table border='1'><tr><th>Item Code</th>" + "<th>Item Name</th><th>Item Price</th>"
-					+ "<th>Item Description</th>" + "<th>aaa</th><th>dddd</th>" + "<th>Update</th><th>Remove</th></tr>";
+			output = "<table border='1'><tr><th>User ID</th>" + "<th>First Name</th><th>Last Name</th>"
+					+ "<th>Age</th>" + "<th>Address</th><th>Sex</th>" + "<th>Email</th><th>Username</th>" + "<th>Password</th><th>Type</th>" + "<th>Contact</th>" + "<th>Update</th><th>Remove</th></tr>";
 
 			String query = "select * from items";
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
 			// iterate through the rows in the result set
 			while (rs.next()) {
-				String itemID = Integer.toString(rs.getInt("itemID"));
-				String itemCode = rs.getString("itemCode");
-				String itemName = rs.getString("itemName");
-				String itemPrice = Double.toString(rs.getDouble("itemPrice"));
-				String itemDesc = rs.getString("itemDesc");
+				String u_id = Integer.toString(rs.getInt("u_id"));
+				String u_fname = rs.getString("u_fname");
+				String u_lname = rs.getString("u_lname");
+				String u_age = rs.getString("u_age");
+				String u_address = rs.getString("u_address");
+				String u_sex = rs.getString("u_sex");
+				String u_email = rs.getString("u_email");
+				String u_username = rs.getString("u_username");
+				String u_password = rs.getString("u_password");
+				String u_type = rs.getString("u_type");
+				String u_contact = rs.getString("u_contact");
+				
 				
 				// Add into the html table
 				output += "<tr><td><input id='hidItemIDUpdate'" + "name='hidItemIDUpdate'" + "type='hidden' value='"
-						+ itemID + "'>" + itemCode + "</td>";
+						+ u_id + "'>" + u_fname + "</td>";
 				
-				output += "<td>" + itemName + "</td>";
-				output += "<td>" + itemPrice + "</td>";
-				output += "<td>" + itemDesc + "</td>";
+				output += "<td>" + u_lname + "</td>";
+				output += "<td>" + u_age + "</td>";
+				output += "<td>" + u_address + "</td>";
+				output += "<td>" + u_sex + "</td>";
+				output += "<td>" + u_email + "</td>";
+				output += "<td>" + u_username + "</td>";
+				output += "<td>" + u_password + "</td>";
+				output += "<td>" + u_type + "</td>";
+				output += "<td>" + u_contact + "</td>";
 				// buttons
 				output += "<td><input name='btnUpdate'" + "type='button' value='Update'"
 						+ "class='btnUpdate btn btn-secondary'></td>" + "<td><input name='btnRemove'"
-						+ "type='button' value='Remove'" + "class='btnRemove btn btn-danger'" + "data-itemid='" + itemID
+						+ "type='button' value='Remove'" + "class='btnRemove btn btn-danger'" + "data-u_id='" + u_id
 						+ "'>" + "</td></tr>";
 			}
 			con.close();
@@ -67,7 +80,7 @@ public class Item {
 		return output;
 	}
 
-	public String insertItem(String code, String name, String price, String desc) {
+	public String insertItem(String u_id, String u_fname, String u_lname, String u_age, String u_address, String u_sex, String u_email, String u_username, String u_password, String u_type, String u_contact) {
 		String output = "";
 		try {
 			Connection con = connect();
@@ -75,15 +88,21 @@ public class Item {
 				return "Error while connecting to the database for inserting.";
 			}
 			// create a prepared statement
-			String query = " insert into items(`itemID`,`itemCode`,`itemName`,`itemPrice`,`itemDesc`)"
+			String query = " insert into items(`u_id`,`u_fname`,`u_lname`,`u_age`,`u_address`,`u_sex`,`u_email`,`u_username`,`u_password`,`u_type`,`u_contact`)"
 					+ " values (?, ?, ?, ?, ?)";
 			PreparedStatement preparedStmt = con.prepareStatement(query);
 			// binding values
-			preparedStmt.setInt(1, 0);
-			preparedStmt.setString(2, code);
-			preparedStmt.setString(3, name);
-			preparedStmt.setDouble(4, Double.parseDouble(price));
-			preparedStmt.setString(5, desc);
+			preparedStmt.setString(1, u_id);
+			preparedStmt.setString(2, u_fname);
+			preparedStmt.setString(3, u_lname);
+			preparedStmt.setString(4, u_age);
+			preparedStmt.setString(5, u_address);
+			preparedStmt.setString(6, u_sex);
+			preparedStmt.setString(7, u_email);
+			preparedStmt.setString(8, u_username);
+			preparedStmt.setString(9, u_password);
+			preparedStmt.setString(10, u_type);
+			preparedStmt.setString(11, u_contact);
 
 			// execute the statement
 			preparedStmt.execute();
