@@ -1,4 +1,4 @@
-<%@page import="com.HelthCare.Model.Item"%>
+<%@page import="com.HelthCare.Model.User"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -8,14 +8,14 @@
 <title>Items Management</title>
 <link rel="stylesheet" href="Views/bootstrap.min.css">
 <script src="Components/jquery-3.2.1.min.js"></script>
-<script src="Components/items.js"></script>
+<script src="Components/users.js"></script>
 </head>
 <body>
 	<div class="container">
 		<div class="row">
 			<div class="col-6">
 				<h1>User Management - User Details</h1>
-				<form id="formItem" name="formItem">
+				<form id="formUser" name="formUser">
 
 						User first name: <input id="u_fname" name="u_fname" type="text"
 						class="form-control form-control-sm"> 
@@ -56,8 +56,8 @@
 				<br>
 				<div id="divItemsGrid">
 					<%
-						Item itemObj = new Item();
-					out.print(itemObj.readItems());
+						User userObj = new User();
+								out.print(userObj.readUsers());
 					%>
 				</div>
 			</div>

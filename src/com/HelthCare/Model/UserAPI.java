@@ -12,13 +12,13 @@ import java.util.Scanner;
 /**
  * Servlet implementation class ItemsAPI
  */
-@WebServlet("/ItemsAPI")
-public class ItemsAPI extends HttpServlet {
+@WebServlet("/UserAPI")
+public class UserAPI extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	 Item itemObj = new Item();
+	 User userObj = new User();
        
-    public ItemsAPI() {
+    public UserAPI() {
         super();
        
     }
@@ -37,7 +37,7 @@ public class ItemsAPI extends HttpServlet {
 	
 	{
 		
-		 String output = itemObj.insertItem(request.getParameter("u_fname"),
+		 String output = userObj.insertUser(request.getParameter("u_fname"),
 		 request.getParameter("u_lname"),
 		 request.getParameter("u_age"),
 		 request.getParameter("u_address"),
@@ -58,7 +58,7 @@ public class ItemsAPI extends HttpServlet {
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
 		 Map paras = getParasMap(request);
-		 String output = itemObj.updateItem(paras.get("hidItemIDSave").toString(),
+		 String output = userObj.updateUser(paras.get("hidItemIDSave").toString(),
 		 
 		 paras.get("u_fname").toString(),
 		 paras.get("u_lname").toString(),
@@ -79,7 +79,7 @@ public class ItemsAPI extends HttpServlet {
 	
 	{
 		 Map paras = getParasMap(request);
-		 String output = itemObj.deleteItem(paras.get("u_id").toString());
+		 String output = userObj.deleteUser(paras.get("u_id").toString());
 		 response.getWriter().write(output);
 		}
 	
