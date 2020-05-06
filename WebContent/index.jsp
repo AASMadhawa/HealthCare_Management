@@ -38,7 +38,7 @@
 						Username: <input id="u_username" name="u_username" type="text"
 						class="form-control form-control-sm"> 
 						<br>
-						Password: <input id="u_password" name="u_password" type="text"
+						Password: <input id="u_password" name="u_password" type="password"
 						class="form-control form-control-sm"> 
 						<br> 
 						Type: <input id="u_type" name="u_type" type="text"

@@ -11,7 +11,7 @@ public class User {
 		Connection con = null;
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/test1_paf", "root", "");
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/helthcare_management", "root", "");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -33,7 +33,7 @@ public class User {
 			output = "<table border='1'><tr><th>First Name</th><th>Last Name</th>"
 					+ "<th>Age</th>" + "<th>Address</th><th>Sex</th>" + "<th>Email</th><th>Username</th>" + "<th>Password</th><th>Type</th>" + "<th>Contact</th>" + "<th>Update</th><th>Remove</th></tr>";
 
-			String query = "select * from user";
+			String query = "select * from users";
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
 			// iterate through the rows in the result set
@@ -88,7 +88,7 @@ public class User {
 				return "Error while connecting to the database for inserting.";
 			}
 			// create a prepared statement
-			String query = " insert into user(`u_id`,`u_fname`,`u_lname`,`u_age`,`u_address`,`u_sex`,`u_email`,`u_username`,`u_password`,`u_type`,`u_contact`)"
+			String query = " insert into users(`u_id`,`u_fname`,`u_lname`,`u_age`,`u_address`,`u_sex`,`u_email`,`u_username`,`u_password`,`u_type`,`u_contact`)"
 					+ " values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			PreparedStatement preparedStmt = con.prepareStatement(query);
 			// binding values
@@ -125,7 +125,7 @@ public class User {
 				return "Error while connecting to the database for updating.";
 			}
 			// create a prepared statement
-			String query = "UPDATE user SET u_fname=?,u_lname=?,u_age=?,u_address=?,u_sex=?,u_email=?,u_username=?,u_password=?,u_type=?,u_contact=? WHERE u_id=?";
+			String query = "UPDATE users SET u_fname=?,u_lname=?,u_age=?,u_address=?,u_sex=?,u_email=?,u_username=?,u_password=?,u_type=?,u_contact=? WHERE u_id=?";
 			PreparedStatement preparedStmt = con.prepareStatement(query);
 			// binding values
 			
@@ -161,7 +161,7 @@ public class User {
 			}
 
 			// create a prepared statement
-			String query = "delete from user where u_id=?";
+			String query = "delete from users where u_id=?";
 			PreparedStatement preparedStmt = con.prepareStatement(query);
 			// binding values
 			preparedStmt.setInt(1, Integer.parseInt(u_id));

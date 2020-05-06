@@ -162,7 +162,7 @@ function validateItemForm() {
 	}
 	var tmpContact = $("#u_contact").val().trim();
 	if (!$.isNumeric(tmpContact)) {
-		return "Insert a numerical value for Age.";
+		return "Insert a numerical value for Contact.";
 	}
 
 	return true;
