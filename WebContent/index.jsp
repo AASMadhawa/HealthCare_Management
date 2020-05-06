@@ -32,7 +32,7 @@
 						Sex: <input id="u_sex" name="u_sex" type="text"
 						class="form-control form-control-sm"> 
 						<br> 
-						Email: <input id="u_email" name="u_email" type="text"
+						Email: <input id="u_email" name="u_email" type="email"
 						class="form-control form-control-sm"> 
 						<br> 
 						Username: <input id="u_username" name="u_username" type="text"
