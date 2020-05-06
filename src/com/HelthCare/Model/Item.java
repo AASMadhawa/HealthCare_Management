@@ -30,15 +30,15 @@ public class Item {
 
 			// Prepare the html table to be displayed
 
-			output = "<table border='1'><tr><th>User ID</th>" + "<th>First Name</th><th>Last Name</th>"
+			output = "<table border='1'><tr><th>First Name</th><th>Last Name</th>"
 					+ "<th>Age</th>" + "<th>Address</th><th>Sex</th>" + "<th>Email</th><th>Username</th>" + "<th>Password</th><th>Type</th>" + "<th>Contact</th>" + "<th>Update</th><th>Remove</th></tr>";
 
-			String query = "select * from users";
+			String query = "select * from user";
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
 			// iterate through the rows in the result set
 			while (rs.next()) {
-				String u_id = rs.getString("u_id");
+				String u_id = Integer.toString(rs.getInt("u_id"));
 				String u_fname = rs.getString("u_fname");
 				String u_lname = rs.getString("u_lname");
 				String u_age = rs.getString("u_age");
@@ -52,10 +52,9 @@ public class Item {
 				
 				
 				// Add into the html table
-				//output += "<tr><td><input id='hidItemIDUpdate'" + "name='hidItemIDUpdate'" + "type='hidden' value='"
-						//+ u_id + "'></td>";
-				output += "<tr><td>" + u_id + "</td>";
-				output += "<td>" + u_fname + "</td>";
+				output += "<tr><td><input id='hidItemIDUpdate'" + "name='hidItemIDUpdate'" + "type='hidden' value='"
+						+ u_id + "'>" + u_fname + "</td>";
+				
 				output += "<td>" + u_lname + "</td>";
 				output += "<td>" + u_age + "</td>";
 				output += "<td>" + u_address + "</td>";
@@ -81,7 +80,7 @@ public class Item {
 		return output;
 	}
 
-	public String insertItem(String u_id, String u_fname, String u_lname, String u_age, String u_address, String u_sex, String u_email, String u_username, String u_password, String u_type, String u_contact) {
+	public String insertItem(String u_fname, String u_lname, String u_age, String u_address, String u_sex, String u_email, String u_username, String u_password, String u_type, String u_contact) {
 		String output = "";
 		try {
 			Connection con = connect();
@@ -89,11 +88,11 @@ public class Item {
 				return "Error while connecting to the database for inserting.";
 			}
 			// create a prepared statement
-			String query = " insert into users(`u_id`,`u_fname`,`u_lname`,`u_age`,`u_address`,`u_sex`,`u_email`,`u_username`,`u_password`,`u_type`,`u_contact`)"
+			String query = " insert into user(`u_id`,`u_fname`,`u_lname`,`u_age`,`u_address`,`u_sex`,`u_email`,`u_username`,`u_password`,`u_type`,`u_contact`)"
 					+ " values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			PreparedStatement preparedStmt = con.prepareStatement(query);
 			// binding values
-			preparedStmt.setString(1, u_id);
+			preparedStmt.setInt(1, 0);
 			preparedStmt.setString(2, u_fname);
 			preparedStmt.setString(3, u_lname);
 			preparedStmt.setString(4, u_age);
@@ -126,7 +125,7 @@ public class Item {
 				return "Error while connecting to the database for updating.";
 			}
 			// create a prepared statement
-			String query = "UPDATE users SET u_fname=?,u_lname=?,u_age=?,u_address=?,u_sex=?,u_email=?,u_username=?,u_password=?,u_type=?,u_contact=? WHERE u_id=?";
+			String query = "UPDATE user SET u_fname=?,u_lname=?,u_age=?,u_address=?,u_sex=?,u_email=?,u_username=?,u_password=?,u_type=?,u_contact=? WHERE u_id=?";
 			PreparedStatement preparedStmt = con.prepareStatement(query);
 			// binding values
 			
@@ -140,7 +139,7 @@ public class Item {
 			preparedStmt.setString(8, u_password);
 			preparedStmt.setString(9, u_type);
 			preparedStmt.setString(10, u_contact);
-			preparedStmt.setString(11, u_id);
+			preparedStmt.setInt(11, Integer.parseInt(u_id));
 			// execute the statement
 			preparedStmt.execute();
 			con.close();
@@ -162,10 +161,10 @@ public class Item {
 			}
 
 			// create a prepared statement
-			String query = "delete from users where u_id=?";
+			String query = "delete from user where u_id=?";
 			PreparedStatement preparedStmt = con.prepareStatement(query);
 			// binding values
-			preparedStmt.setString(1, u_id);
+			preparedStmt.setInt(1, Integer.parseInt(u_id));
 			// execute the statement
 			preparedStmt.execute();
 			con.close();

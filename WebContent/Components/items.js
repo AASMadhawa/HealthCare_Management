@@ -1,6 +1,8 @@
 $(document).ready(function() {
 	$("#alertSuccess").hide();
-	$("#alertSuccess").hide();
+
+	$("#alertError").hide();
+
 
 });
 
@@ -22,6 +24,8 @@ $(document).on("click", "#btnSave", function(event) {
 	// If valid------------------------
 
 	var type = ($("#hidItemIDSave").val() == "") ? "POST" : "PUT";
+	console.log($("#hidItemIDUpdate").val());
+	console.log($("#formItem").serialize());
 
 	$.ajax({
 		url : "ItemsAPI",
@@ -65,19 +69,21 @@ $(document).on(
 		"click",
 		".btnUpdate",
 		function(event) {
+			
+			
 			$("#hidItemIDSave").val(
 					$(this).closest("tr").find('#hidItemIDUpdate').val());
-			$("#u_id").val($(this).closest("tr").find('td:eq(0)').text());
-			$("#u_fname").val($(this).closest("tr").find('td:eq(1)').text());
-			$("#u_lname").val($(this).closest("tr").find('td:eq(2)').text());
-			$("#u_age").val($(this).closest("tr").find('td:eq(3)').text());
-			$("#u_address").val($(this).closest("tr").find('td:eq(4)').text());
-			$("#u_sex").val($(this).closest("tr").find('td:eq(5)').text());
-			$("#u_email").val($(this).closest("tr").find('td:eq(6)').text());
-			$("#u_username").val($(this).closest("tr").find('td:eq(7)').text());
-			$("#u_password").val($(this).closest("tr").find('td:eq(8)').text());
-			$("#u_type").val($(this).closest("tr").find('td:eq(9)').text());
-			$("#u_contact").val($(this).closest("tr").find('td:eq(10)').text());
+			
+			$("#u_fname").val($(this).closest("tr").find('td:eq(0)').text());
+			$("#u_lname").val($(this).closest("tr").find('td:eq(1)').text());
+			$("#u_age").val($(this).closest("tr").find('td:eq(2)').text());
+			$("#u_address").val($(this).closest("tr").find('td:eq(3)').text());
+			$("#u_sex").val($(this).closest("tr").find('td:eq(4)').text());
+			$("#u_email").val($(this).closest("tr").find('td:eq(5)').text());
+			$("#u_username").val($(this).closest("tr").find('td:eq(6)').text());
+			$("#u_password").val($(this).closest("tr").find('td:eq(7)').text());
+			$("#u_type").val($(this).closest("tr").find('td:eq(8)').text());
+			$("#u_contact").val($(this).closest("tr").find('td:eq(9)').text());
 			
 		});
 
@@ -116,10 +122,7 @@ function onItemDeleteComplete(response, status) {
 
 // CLIENTMODEL=========================================================================
 function validateItemForm() {
-	// CODE
-	if ($("#u_id").val().trim() == "") {
-		return "Insert User Id.";
-	}
+
 	// NAME
 	if ($("#u_fname").val().trim() == "") {
 		return "Insert First Name.";

@@ -37,8 +37,7 @@ public class ItemsAPI extends HttpServlet {
 	
 	{
 		
-		 String output = itemObj.insertItem(request.getParameter("u_id"),
-		 request.getParameter("u_fname"),
+		 String output = itemObj.insertItem(request.getParameter("u_fname"),
 		 request.getParameter("u_lname"),
 		 request.getParameter("u_age"),
 		 request.getParameter("u_address"),
